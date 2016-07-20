@@ -1,6 +1,6 @@
 
 
-# Docker Entei container
+# Docker - Entei Container
 <center>![alt text](http://i.imgur.com/w96CFqy.png)</center>
 
 Hi, Entei is a Dockerfile for creating a container with fullfeatures for productive developers. 
@@ -20,7 +20,7 @@ The container is based on Linux Ubuntu 14.04 and has:
 1. Install Docker (docker.io)
 2. Build your "Entei" docker image
 ```sh
-docker build -f Dockerfile. -t <youruser>/entei:latest .
+docker build -f Dockerfile . -t entei:latest .
 ```
 3. And run your instance with:
 ```sh

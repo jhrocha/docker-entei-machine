@@ -31,10 +31,17 @@ RUN echo 'source /usr/local/rvm/scripts/rvm' >> /etc/bash.bashrc
 # GIT INSTALL
 RUN apt-get install -y  git
 
-# NODE INSTALL
-RUN apt-get install -y nodejs
-RUN apt-get install -y build-essential
-RUN apt-get install -y npm
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 6.3.0
+
+# NVM && NODE INSTALL
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.3/install.sh | bash \
+    && source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 RUN echo 'nodejs --version' >> /etc/bash.bashrc
 
 # PhantomJS Install

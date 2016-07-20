@@ -20,7 +20,7 @@ The container is based on Linux Ubuntu 14.04 and has:
 1. Install Docker (docker.io)
 2. Build your "Entei" docker image
 ```sh
-docker build -f Dockerfile . -t entei:latest
+docker build -f DockerFile . -t entei:latest
 ```
 3. And run your instance with:
 ```sh

@@ -10,7 +10,8 @@ The container is based on Linux Ubuntu 14.04 and has:
   - RVM (Ruby Version Manager)
   - Ruby 2.3.0
   - Rails latest version
-  - NodeJS
+  - NVM (NodeJS Version Manager)
+  - NodeJS 6.3.0
   - NGINX server
   - GIT
   - PhantomJS 2.2.1

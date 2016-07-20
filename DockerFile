@@ -1,0 +1,46 @@
+FROM ubuntu:14.04
+
+USER root
+
+RUN apt-get -y update && apt-get install -y curl && apt-get install -y wget
+
+# POSTGRESQL INSTALL
+RUN apt-get install -y postgresql-9.3
+ 
+RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
+
+ADD modify_postgres_pass.sh /modify_postgres_pass.sh
+ADD run_postgres.sh /run_postgres.sh
+RUN chmod u=rwx /*.sh
+RUN echo '/run_postgres.sh' >> /etc/bash.bashrc
+
+EXPOSE 5432
+RUN /bin/bash -c ./run_postgres.sh
+
+# NGINX INSTALL
+RUN apt-get install -y nginx
+RUN echo 'service nginx restart' >> /etc/bash.bashrc
+EXPOSE 80
+
+# RVM && RUBY INSTALL
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+RUN \curl -L https://get.rvm.io | bash -s stable --rails
+RUN echo 'source /usr/local/rvm/scripts/rvm' >> /etc/bash.bashrc
+
+# GIT INSTALL
+RUN apt-get install -y  git
+
+# NODE INSTALL
+RUN apt-get install -y nodejs
+RUN apt-get install -y build-essential
+RUN apt-get install -y npm
+RUN echo 'nodejs --version' >> /etc/bash.bashrc
+
+# PhantomJS Install
+ADD phantomjs_install.sh /phantomjs_install.sh
+RUN chmod u=rwx /*.sh
+RUN /phantomjs_install.sh
+
+# EXTRA PACKAGES
+RUN apt-get install -y nano && apt-get install -y vim

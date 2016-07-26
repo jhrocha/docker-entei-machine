@@ -17,6 +17,11 @@ The container is based on Linux Ubuntu 14.04 and has:
   - PhantomJS 2.2.1
 
 ### Installation
+- [Linux] https://docs.docker.com/linux/started/
+- [Mac] http://docs.docker.com/mac/started/
+- [Windows] http://docs.docker.com/windows/started/
+
+### Installation
 
 1. Install Docker (docker.io)
 2. Build your "Entei" docker image

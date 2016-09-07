@@ -49,7 +49,7 @@ docker exec -it <container_id> bash
 ```
 
 ### Exit container without stopping
-- [Mac] CMD+P+Q
+- [Mac] Option+Shift+P+Q
 - [Win] CTRL+P+Q
 - [Linux] CTRL+P+Q
 

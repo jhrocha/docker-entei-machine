@@ -33,7 +33,32 @@ docker build -f DockerFile . -t entei:latest
 docker run -t -i <image_id> bin/bash
 ```
 
-OBS: To list all images created, use this:
+### To list all images created, use this:
 ```sh
 docker images
+```
+
+### List all your containers
+```sh
+docker ps
+```
+
+### Run your container with interactive bash
+```sh
+docker exec -it <container_id> bash
+```
+
+### Exit container without stopping
+- [Mac] CMD+P+Q
+- [Win] CTRL+P+Q
+- [Linux] CTRL+P+Q
+
+### Commit changes on container (saves your changes locally)
+```sh
+docker commit <image_id> new_image_name:tag_name(optional)
+```
+
+### Push changes to your repo (saves your changes on repo)
+```sh
+docker push <docker_username>/<docker_image_name>
 ```

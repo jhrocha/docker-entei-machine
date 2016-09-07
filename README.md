@@ -58,7 +58,7 @@ docker exec -it <container_id> bash
 docker commit <image_id> new_image_name:tag_name(optional)
 ```
 
-### Push changes to your repo (saves your changes locally)
+### Push changes to your repo (saves your changes on repo)
 ```sh
 docker push <docker_username>/<docker_image_name>
 ```

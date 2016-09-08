@@ -40,6 +40,10 @@ The container is based on Linux Ubuntu 14.04 and has:
   ```sh
   docker run -v <host_folder>:<container_folder> -t -i <image_id> bin/bash
   ```
+    **With shared folder and bind port**
+  ```sh
+  docker run -v <host_folder>:<container_folder> -p PORT_TO_ACCESS:PORT_TO_ACCESS -t -i <image_id> bin/bash
+  ```
 PS: The Entei has a folder, created automatically, called host_folder. This located on /
 
 

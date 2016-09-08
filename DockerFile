@@ -5,7 +5,7 @@ USER root
 RUN apt-get -y update && apt-get install -y curl && apt-get install -y wget
 
 # POSTGRESQL INSTALL
-RUN apt-get install -y postgresql-9.3
+RUN apt-get install -y postgresql postgresql-contrib
 RUN apt-get install -y libpq-dev 
 RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
@@ -53,6 +53,7 @@ RUN /phantomjs_install.sh
 
 # EXTRA PACKAGES
 RUN apt-get install -y nano && apt-get install -y vim
+RUN apt-get install -y lsof
 
 # Create directory for sync
 RUN mkdir host_folder

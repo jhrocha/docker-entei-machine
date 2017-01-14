@@ -1,0 +1,33 @@
+version: "2"
+services:
+
+  rails_app:
+    build:
+     context: ./rails_application
+     dockerfile: Dockerfile
+    ports:
+     - "3000:3000"
+    volumes:
+     - "/host_folder:/Users/jorgehsrocha/Documents/dev"
+    links:
+      - postgres
+      - nodejs
+    depends_on:
+      - postgres
+
+  postgres:
+    build:
+     context: ./database_application
+     dockerfile: Dockerfile
+    ports:
+     - "5432:5432"
+
+  nodejs:
+    build:
+     context: ./nodejs_application
+     dockerfile: Dockerfile
+    ports:
+     - "4000:4000"
+    volumes:
+     - "/host_folder:/Users/jorgehsrocha/Documents/dev "
+    command: nodejs --version

@@ -1,0 +1,12 @@
+FROM ubuntu:16.04
+
+USER root
+
+RUN apt-get -y update && apt-get install -y curl
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+RUN \curl -L https://get.rvm.io | bash -s stable --rails
+RUN echo 'source /usr/local/rvm/scripts/rvm' >> /etc/bash.bashrc
+EXPOSE 3000
+
+# Create directory for sync
+RUN mkdir host_folder

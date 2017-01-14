@@ -1,0 +1,11 @@
+FROM node:slim
+
+USER root
+
+# PhantomJS Install
+ADD phantomjs_install.sh /phantomjs_install.sh
+RUN chmod u=rwx /*.sh
+RUN /phantomjs_install.sh
+
+# Create directory for sync
+RUN mkdir host_folder

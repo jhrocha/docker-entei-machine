@@ -1,0 +1,17 @@
+FROM ubuntu:16.04
+
+USER root
+
+RUN apt-get -y update
+RUN apt-get install -y postgresql postgresql-contrib
+RUN apt-get install -y libpq-dev
+RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.5/main/pg_hba.conf
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.5/main/postgresql.conf
+
+ADD modify_postgres_pass.sh /modify_postgres_pass.sh
+ADD run_postgres.sh /run_postgres.sh
+RUN chmod u=rwx /*.sh
+RUN echo '/run_postgres.sh' >> /etc/bash.bashrc
+
+EXPOSE 5432
+RUN /bin/bash -c ./run_postgres.sh
